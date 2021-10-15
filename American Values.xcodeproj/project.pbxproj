@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		C8CB3853271A2F390006FE93 /* American Values */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "American Values"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8CB3856271A2F390006FE93 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		C8CB385E271A354C0006FE93 /* Sources */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Sources; path = "console-kit/Sources"; sourceTree = SOURCE_ROOT; };
+		C8CB3860271A3CD50006FE93 /* Sony-SVD1321Z9E-VAIO-Hackintosh-OpenCore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Sony-SVD1321Z9E-VAIO-Hackintosh-OpenCore"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				C8CB3856271A2F390006FE93 /* main.swift */,
+				C8CB3860271A3CD50006FE93 /* Sony-SVD1321Z9E-VAIO-Hackintosh-OpenCore */,
+				C8CB385E271A354C0006FE93 /* Sources */,
 			);
 			path = "American Values";
 			sourceTree = "<group>";
