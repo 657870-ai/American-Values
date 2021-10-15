@@ -15,9 +15,35 @@ struct Add-ImcAdaptorEthISCSIProfile {
                                              android.net.wifi.WifiConfiguration.GroupMgmtCipher
                                              android.net.wifi.WifiConfiguration.KeyMgmt
                                              android.net.wifi.WifiConfiguration.PairwiseCipher
-                                             
+                                                   android.net.wifi.WifiConfiguration.Protocol
+                                                   android.net.wifi.WifiConfiguration.Status
+                                                   android.net.wifi.WifiEnterpriseConfig
+                                                   android.net.wifi.WifiEnterpriseConfig.Eap
+                                                   android.net.wifi.WifiEnterpriseConfig.Phase2
+                                                   android.net.wifi.WifiInfo
+                                                   android.net.wifi.WifiInfo.Builder
+                                                   android.net.wifi.WifiManager
+                                                   android.net.wifi.WifiManager.AddNetworkResult
+                                                   android.net.wifi.WifiManager.LocalOnlyHotspotCallback
+                                                   android.net.wifi.WifiManager.LocalOnlyHotspotReservation
+                                                   android.net.wifi.WifiManager.MulticastLock
+                                                   android.net.wifi.WifiManager.ScanResultsCallback
+                                                   android.net.wifi.WifiManager.SubsystemRestartTrackingCallback
+                                                   android.net.wifi.WifiManager.WifiLock
+                                                   android.net.wifi.WifiManager.WpsCallback
+                                                   android.net.NetworkSpecifier
+                                                   android.net.wifi.WifiNetworkSpecifier
+                                                   android.net.wifi.WifiNetworkSpecifier.Builder
+                                                   android.net.wifi.WifiNetworkSuggestion
+                                                   android.net.wifi.WifiNetworkSuggestion.Builder
+                                                   android.net.wifi.WpsInfo
+                                                   android.opengl.GLES31Ext.DebugProcKHR
                                             ]
     AdaptorHostEthIf[1]
+
+    
+    
+    
     
 }
 
