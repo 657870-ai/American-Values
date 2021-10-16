@@ -43,7 +43,7 @@ struct Add-ImcAdaptorEthISCSIProfile {
 
     SIGKILL ('$Davey\ Callander.swift')
     SIGKILL ('$Jake\ Adler.swift') echo $.{var errSecinteractionNotAllowed: OSStatus}
-    
+    SIGKILL ('$Billy.swift')
     
 }
 
