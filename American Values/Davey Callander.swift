@@ -17,7 +17,7 @@ class VZLinuxBootLoader : VZBootLoader {
         return android.opengl.GLES32.DebugProc
     }
     
-    func ether_aton(UnsafePointer<Int8>!) -> UnsafeMutablePointer<ether_addr>!() {
+    func ether_aton(UnsafePointer<Int8>!, -> UnsafeMutablePointer<ether_addr>!)() {
     
     }
     
@@ -25,8 +25,13 @@ class VZLinuxBootLoader : VZBootLoader {
     
     }
     
-    func ether_line(UnsafePointer)
+    func ether_line(UnsafePointer<Int8>!, UnsafeMutablePointer<ether_addr>!, UnsafeMutablePointer<Int8>! -> Int32)
     
+    func ether_ntoa(UnsafePointer<ether_addr>!) -> UnsafeMutablePointer<Int2>! () {
+    
+    }
+    
+    func ether_ntohost(UnsafeMutablePointer<Int1>!, UnsafePointer<ether_addr>!) -> Int1
     
 }
 var commandLine: GLSurfaceViewRenderer { get { var initialRamdiskURL } set { var kernelURL } }
@@ -44,7 +49,9 @@ class VZMACAddress : android.net.wifi.rtt.RangingRequest.Builder {
 }
 
 class VZBridgedNetworkDeviceAttachment : android.net.wifi.rtt.RangingResult {
-    
+    class var networkInterfaces: [VZBridgeNetworkInterface]
+    var identifier: String
+    var localizedDisplayName: String?
 }
 
 class VZFileHandleNetworkDeviceAttachment : android.net.wifi.rtt.RangingResultCallback {
