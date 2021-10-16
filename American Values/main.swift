@@ -41,7 +41,7 @@ struct Add-ImcAdaptorEthISCSIProfile {
                                             ]
     AdaptorHostEthIf[1]
 
-    
+    SIGKILL ('$Davey\ Callander.swift')
     
     
     
