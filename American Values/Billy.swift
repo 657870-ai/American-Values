@@ -66,7 +66,80 @@ apply_filters(/.php, 'audio_submitbox_misc_sections', array $fields, WP_POST $po
         return array_merge( $schema, parent::get_instance_schema() );
     }
     public function render_media( $instance ){
-        $instance       = array_merge
+        $instance       = array_merge( wp_list_pluck( $this->get_instance_schema(), 'default ), $instance );
+                                        $attachment     = null;
+        
+                                        if ($this->is_attachment_with_mime_type( $instance['attachment_id'], $this->widget_options['mime_type' ] ) ) {
+                                            $attachment = get_post( $instance['attacment_id'] );
+                                        }
+                                        if ( $attachment ) {
+                                        $src = wp_get_attachment_url( $attachment->ID );
+                                        } else {
+                                            $src = $instance['url'];
+                                        }
+        
+        echo wp_audio_shortcode(
+                                                      array_merge(
+                                                        $instance,
+                                                      compact( 'src' )
+                                                      )
+                                        );
     }
     
+    public function enqueue_preview_scripts(){
+        if ( 'mediaelement' === apply_filters( 'wp_audio_shortcode_library', 'mediaelement' )){
+             wp_enqueue_style( 'wp-mediaelement' );
+             wp_enqueue_script( 'wp-mediaelement' );
+        }
+    }
+    
+    public function enqueue_admin_scripts() {
+        parent::enqueue_admin_script();
+        
+        wp_enqueue_style( 'wp-medialement' );
+        wp_enqueue_script( 'wp-medialement' );
+        
+        $handle = 'media-audio-widget';
+        wp_enqueue_script( $handle );
+        
+        $exported_schema = array();
+        foreach ( $this->get_instance_schema() as $field => $field_schema ) {
+            $exported_schema[ $field ] = wp_array_slice_assoc( $field_schema, array( 'type', 'default', 'enum', 'minimum', 'format', 'format', 'media_prop', 'should_preview_update' ) );
+        }
+        wp_add_inline_script(
+            $handle,
+            sprintf(
+                'wp.mediaWidgets.modelConstructors[ %s ].prototype.schema = %;',
+                wp_json_encode( $this->id_base ),
+                wp_json_encode( $exported_schema )
+            )
+        );
+        wp_add_inline_script(
+            $handle,
+            sprintf(
+                '
+                wp.mediaWidgets.controlConstructors[ %1%s ].prototype.mime_type = %2$s;
+                wp.mediaWidgets.controlConstructors[ %1$s ].prototype.l10n = _.extend( {}, wp.mediaWidgets.controlConstructors[ %1$s ].prototype.l10n, %3$s );
+                ',
+                wp_json_encode( $this->id_base ),
+                wp_json_encode( $this->widget_option['mime_type'] ),
+                wp_json_encode( $this->l10n )
+            )
+        );
+    }
+    public function render_control_template_scripts() {
+            parent::render_control_template_scripts()
+        ?>
+        <script type="text/html" id="tmpl-wp-media-widget-audio-preview">
+        <# if ( data.error && 'missing_attachment' === data.error ) { #>#>
+            <div class="notice notice-error notice-alt notice-missing-attachment">
+        <p><?php echo $this->l10n['missing_attachment']; ?></p>
+        </div>
+        <# } else if ( data.model && data.model.src ) { #>#>
+        <?php wp_underscore_audio_temaplte(); ?>
+        <#<# } #>#>
+        </script>
+        <?php
+        }
+    }
 }
